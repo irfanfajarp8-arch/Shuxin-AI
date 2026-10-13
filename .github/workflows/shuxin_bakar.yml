@@ -2,7 +2,9 @@ name: Build APK
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+      - master
   workflow_dispatch:
 
 jobs:
@@ -24,11 +26,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Install Buildozer Master and Dependencies
+      - name: Install Buildozer and Dependencies
         run: |
           pip install --upgrade pip --break-system-packages
           pip install virtualenv --break-system-packages
-          pip install git+https://github.com --break-system-packages
+          pip install buildozer --break-system-packages
 
       - name: Build APK with Buildozer
         run: |
@@ -42,4 +44,3 @@ jobs:
         with:
           name: AI-APK
           path: ./.buildozer/android/platform/build-armeabi-v7a_arm64-v8a/dists/*/build/outputs/apk/debug/*.apk
-          
