@@ -27,10 +27,12 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y git zip unzip libssl-dev build-essential ccache libffi-dev aidl
 
-    - name: Install Buildozer and Dependencies
+    - name: Install Buildozer Master and Dependencies
       run: |
         pip install --upgrade pip --break-system-packages
-        pip install buildozer cython virtualenv --break-system-packages
+        pip install cython virtualenv --break-system-packages
+        # Menginstal Buildozer versi master langsung dari GitHub untuk memperbaiki bug sdkmanager
+        pip install git+https://github.com --break-system-packages
 
     - name: Build APK with Buildozer
       run: |
@@ -47,4 +49,3 @@ jobs:
       with:
         name: Shuxin-AI-APK
         path: bin/*.apk
-        
