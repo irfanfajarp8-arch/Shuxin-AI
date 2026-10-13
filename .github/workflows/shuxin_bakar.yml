@@ -28,6 +28,10 @@ jobs:
 
     - name: Build APK with Buildozer
       run: |
+        # Trik Jitu: Otomatis membuat folder lisensi Google dan menyetujuinya sebelum dibakar
+        mkdir -p ~/.buildozer/android/platform/android-sdk/licenses
+        echo -e "247a1c17b6f62156430cd757444d40b8bb9b7473\nd56f5187479451eabf01fb74313025331356cc8e\n84831b9409646a918e30573bab4c9c91346d8abd\n504667f4c0de7af1a06de9f4b1727b84351f2910\n8933bad161af4178b1185d1a37fbf41ea5269c55\n2f20a60b9c556b23f3d90f33165ec3b83e3e2a3b" > ~/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+        
         buildozer android debug
       env:
         ACCEPT_SDK_LICENSE_NET: y
@@ -37,3 +41,4 @@ jobs:
       with:
         name: Shuxin-AI-APK
         path: bin/*.apk
+        
