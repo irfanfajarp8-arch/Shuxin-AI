@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout Repository
@@ -26,16 +26,31 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential \
+            libffi-dev \
+            libssl-dev \
+            lib32stdc++6 \
+            libsqlite3-dev \
+            zlib1g-dev \
+            autoconf \
+            automake \
+            libtool \
+            pkg-config \
+            cmake \
+            ccache
+
       - name: Install Buildozer and Dependencies
         run: |
           pip install --upgrade pip --break-system-packages
-          pip install virtualenv --break-system-packages
-          pip install buildozer --break-system-packages
+          pip install virtualenv cython==0.29.36 --break-system-packages
+          pip install git+https://github.com --break-system-packages
 
       - name: Build APK with Buildozer
         run: |
-          sudo apt-get update
-          sudo apt-get install -y lib32stdc++6
           mkdir -p ~/.android && touch ~/.android/repositories.cfg
           yes | buildozer android debug
         env:
