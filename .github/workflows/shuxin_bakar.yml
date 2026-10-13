@@ -52,8 +52,6 @@ jobs:
 
       - name: Build APK with Buildozer
         run: |
-          # Bersihkan sisa build yang korup sebelumnya
-          buildozer android clean
           mkdir -p ~/.android && touch ~/.android/repositories.cfg
           yes | buildozer android debug
         env:
