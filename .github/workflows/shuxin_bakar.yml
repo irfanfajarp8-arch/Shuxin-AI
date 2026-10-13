@@ -47,7 +47,7 @@ jobs:
         run: |
           pip install --upgrade pip --break-system-packages
           pip install virtualenv cython==0.29.36 --break-system-packages
-          pip install git+https://github.com --break-system-packages
+          pip install buildozer --break-system-packages
 
       - name: Build APK with Buildozer
         run: |
