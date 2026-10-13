@@ -19,7 +19,8 @@ jobs:
     - name: Install Platform Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y ccache libncurses5:i386 libstdc++6:i386 libgtk2.0-0:i386 libpangox-ft2-1:i386 libpangoxft-1.0-0:i386 libidn11:i386 unzip zlib1g-dev gcc g++ autoconf automake libtool textinfo fontconfig libxrender1 libxext6 libgomp1
+        sudo apt-get install -y git zip unzip shadow-utils libssl-dev
+        sudo apt-get install -y build-essential ccache libffi-dev libssl-dev dfu-util
 
     - name: Install Buildozer and Dependencies
       run: |
@@ -37,4 +38,3 @@ jobs:
       with:
         name: Shuxin-AI-APK
         path: bin/*.apk
-        
