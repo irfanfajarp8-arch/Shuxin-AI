@@ -21,3 +21,5 @@ android.private_storage = 1
 [buildozer]
 log_level = 2
 warn_on_root = 1
+
+android.accept_sdk_license = Yes
