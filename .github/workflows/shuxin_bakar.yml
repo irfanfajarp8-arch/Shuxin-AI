@@ -46,7 +46,9 @@ jobs:
       - name: Install Buildozer and Dependencies
         run: |
           pip install --upgrade pip --break-system-packages
-          pip install virtualenv cython==0.29.36 --break-system-packages
+          pip install virtualenv --break-system-packages
+          # Menggunakan Cython 3 yang kompatibel dengan Kivy modern
+          pip install "cython>=3.0.0" --break-system-packages
           pip install buildozer --break-system-packages
 
       - name: Build APK with Buildozer
