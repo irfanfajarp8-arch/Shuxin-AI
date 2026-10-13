@@ -34,7 +34,10 @@ jobs:
 
       - name: Build APK with Buildozer
         run: |
-          buildozer android debug
+          sudo apt-get update
+          sudo apt-get install -y lib32stdc++6
+          mkdir -p ~/.android && touch ~/.android/repositories.cfg
+          yes | buildozer android debug
         env:
           ACCEPT_SDK_LICENSE: y
           GRADLE_OPTS: "-Dorg.gradle.daemon=false"
