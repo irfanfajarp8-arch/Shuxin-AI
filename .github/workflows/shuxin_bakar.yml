@@ -1,52 +1,33 @@
-name: Build APK Shuxin AI
-
-on:
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Setup Java 17
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: '17'
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-    - name: Setup Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
-    - name: Install Platform Dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y git zip unzip libssl-dev build-essential ccache libffi-dev aidl
-
-    - name: Install Buildozer Master and Dependencies
-      run: |
-        pip install --upgrade pip --break-system-packages
-        pip install python virtualenv --break-system-packages
-        # Menginstal Buildozer versi master langsung dari GitHub untuk memperbaiki bug sdkmanager
+      - name: Install Buildozer Master and Dependencies
+        run: |
+          pip install --upgrade pip --break-system-packages
+          pip install virtualenv --break-system-packages
           pip install git+https://github.com --break-system-packages
 
+      - name: Build APK with Buildozer
+        run: |
+          buildozer android debug
+        env:
+          ACCEPT_SDK_LICENSE: y
+          GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
-    - name: Build APK with Buildozer
-      run: |
-        mkdir -p ~/.buildozer/android/platform/android-sdk/licenses
-        echo -e "247a1c17b6f62156430cd757444d40b8bb9b7473\nd56f5187479451eabf01fb74313025331356cc8e\n84831b9409646a918e30573bab4c9c91346d8abd\n504667f4c0de7af1a06de9f4b1727b84351f2910\n8933bad161af4178b1185d1a37fbf41ea5269c55\n2f20a60b9c556b23f3d90f33165ec3b83e3e2a3b" > ~/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
-        
-        buildozer android debug
-      env:
-        ACCEPT_SDK_LICENSE_NET: y
-        GRADLE_OPTS: "-Dorg.gradle.daemon=false"
-
-    - name: Upload APK Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: Shuxin-AI-APK
-        path: bin/*.apk
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AI-APK
+          path: ./.buildozer/android/platform/build-armeabi-v7a_arm64-v8a/dists/*/build/outputs/apk/debug/*.apk
