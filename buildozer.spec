@@ -15,7 +15,7 @@ android.permissions = ANSWER_PHONE_CALLS, CALL_PHONE, READ_PHONE_STATE, MODIFY_A
 android.api = 33
 android.build_tools = 33.0.0
 android.minapi = 21
-android.ndk_api = 25c
+android.ndk = 25c
 android.private_storage = 1
 android.accept_sdk_license = True
 
