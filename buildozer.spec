@@ -1,24 +1,24 @@
 [app]
-title = Shuxin AI Proteksi
+title = Shuxin AI
 package.name = shuxinarasipro
-package.domain = org.irfan.shuxinpro
+package.domain = org.test
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
-version = 1.1
+version = 0.1
 
 requirements = python3, kivy==2.3.0, sqlite3, hostpython3
 
 orientation = portrait
-fullscreen = 0
+osx.kivy_version = 2.3.0
+fullscreen = 1
 
-android.permissions = ANSWER_PHONE_CALLS, CALL_PHONE, READ_PHONE_STATE, MODIFY_AUDIO_SETTINGS
+android.permissions = ANSWER_PHONE_CALLS, SEND_SMS, RECEIVE_SMS, READ_PHONE_STATE
 android.api = 33
+android.ndk = 25c
 android.build_tools = 33.0.0
 android.minapi = 21
-android.ndk = 25c
 android.private_storage = 1
 android.accept_sdk_license = True
 
-[buildozer]
-log_level = 2
-warn_on_root = 1
+# Kunci arsitektur ke arm64-v8a saja agar kompilasi OpenSSL tidak bentrok dan gagal
+android.archs = arm64-v8a
