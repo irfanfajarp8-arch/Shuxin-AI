@@ -27,16 +27,16 @@ jobs:
 
     - name: Build APK with Buildozer
       run: |
-        # Ambil dan pasang Android NDK r25c secara bersih agar tidak memakai r27 bawaan server
-        wget https://google.com
-        unzip -q android-ndk-r25c-linux.zip -d ~/.buildozer
+        # Unduh NDK r25c menggunakan direct link resmi Google yang valid
+        wget -q https://google.com
+        unzip -q android-ndk-r25c-linux-x86_64.zip -d /home/runner/
         
-        # Jalankan kompilasi debug
+        # Jalankan kompilasi debug Buildozer
         buildozer android debug
       env:
         ACCEPT_SDK_LICENSE: "y"
-        ANDROID_NDK_HOME: "/home/runner/.buildozer/android-ndk-r25c"
-        ANDROID_NDK: "/home/runner/.buildozer/android-ndk-r25c"
+        ANDROID_NDK_HOME: "/home/runner/android-ndk-r25c"
+        ANDROID_NDK: "/home/runner/android-ndk-r25c"
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
