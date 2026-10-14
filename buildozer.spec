@@ -14,11 +14,9 @@ fullscreen = 1
 
 android.permissions = ANSWER_PHONE_CALLS, SEND_SMS, RECEIVE_SMS, READ_PHONE_STATE
 android.api = 33
-android.ndk = 25c
 android.build_tools = 33.0.0
+android.minapi = 24
 android.private_storage = 1
 android.accept_sdk_license = True
 android.archs = arm64-v8a
-
-# Naikkan batas minimal NDK API agar sqlite3 dan pustaka Python 3.10 tidak crash di menit ke-6
-android.minapi = 24
+android.ndk = 25c
