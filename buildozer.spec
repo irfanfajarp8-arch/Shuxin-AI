@@ -1,10 +1,10 @@
 [app]
 title = Shuxin AI Proteksi
-package.name = shuxinaiproteksi
-package.domain = org.irfan.shuxinai
+package.name = shuxinarasipro
+package.domain = org.irfan.shuxinpro
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
-version = 1.0
+version = 1.1
 
 requirements = python3,kivy
 
