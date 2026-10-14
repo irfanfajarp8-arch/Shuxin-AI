@@ -16,9 +16,9 @@ android.permissions = ANSWER_PHONE_CALLS, SEND_SMS, RECEIVE_SMS, READ_PHONE_STAT
 android.api = 33
 android.ndk = 25c
 android.build_tools = 33.0.0
-android.minapi = 21
 android.private_storage = 1
 android.accept_sdk_license = True
-
-# Kunci arsitektur ke arm64-v8a saja agar kompilasi OpenSSL tidak bentrok dan gagal
 android.archs = arm64-v8a
+
+# Naikkan batas minimal NDK API agar sqlite3 dan pustaka Python 3.10 tidak crash di menit ke-6
+android.minapi = 24
