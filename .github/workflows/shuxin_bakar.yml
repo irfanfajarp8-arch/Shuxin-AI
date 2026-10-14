@@ -27,7 +27,7 @@ jobs:
 
     - name: Build APK with Buildozer
       run: |
-        buildozer android clean
+        yes | sdkmanager --licenses || true
         buildozer android debug
       env:
         ACCEPT_SDK_LICENSE: "y"
