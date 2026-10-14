@@ -30,7 +30,7 @@ jobs:
     - name: Install Buildozer Master and Dependencies
       run: |
         pip install --upgrade pip --break-system-packages
-        pip install cython virtualenv --break-system-packages
+        pip install python virtualenv --break-system-packages
         pip install git+https://github.com --break-system-packages
 
     - name: Build APK with Buildozer
