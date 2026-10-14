@@ -27,11 +27,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y git zip unzip libssl-dev build-essential ccache libffi-dev aidl
 
-    - name: Install Buildozer Master and Dependencies
+    - name: Install Buildozer and Dependencies
       run: |
         pip install --upgrade pip --break-system-packages
-        pip install python virtualenv --break-system-packages
-        pip install git+https://github.com --break-system-packages
+        pip install cython virtualenv --break-system-packages
+        pip install buildozer --break-system-packages
 
     - name: Build APK with Buildozer
       run: |
