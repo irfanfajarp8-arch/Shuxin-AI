@@ -18,11 +18,6 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install NDK r25c
-      uses: rmacklin/setup-android-ndk@v3
-      with:
-        ndk-version: r25c
-
     - name: Install dependencies
       run: |
         sudo apt-get update
@@ -35,10 +30,3 @@ jobs:
         buildozer android debug
       env:
         ACCEPT_SDK_LICENSE: "y"
-        ANDROID_NDK_HOME: ${{ env.ANDROID_NDK_HOME }}
-
-    - name: Upload APK Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: shuxin-ai-apk
-        path: bin/*.apk
