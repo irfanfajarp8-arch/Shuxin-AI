@@ -25,7 +25,7 @@ jobs:
     - name: Install Platform Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y git zip unzip libssl-dev build-essential ccache libffi-dev aidl
+        sudo apt-get install -y git zip unzip libssl-dev build-essential ccache libffi-dev aidl libtool autoconf automake
 
     - name: Install Buildozer and Dependencies
       run: |
