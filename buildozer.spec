@@ -1,22 +1,22 @@
 [app]
-title = Shuxin AI
-package.name = shuxinarasipro
-package.domain = org.test
+title = Shuxin AI - Hologram Security
+package.name = shuxinai
+package.domain = id.shuxin
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
-version = 0.1
-
-requirements = python3, kivy==2.3.0, sqlite3, hostpython3
-
+version = 0.1.0
+requirements = python3,kivy==2.3.0
 orientation = portrait
-osx.kivy_version = 2.3.0
-fullscreen = 1
+fullscreen = 0
 
-android.permissions = ANSWER_PHONE_CALLS, SEND_SMS, RECEIVE_SMS, READ_PHONE_STATE
+android.permissions = INTERNET
 android.api = 33
-android.build_tools = 33.0.0
 android.minapi = 24
-android.private_storage = 1
+android.ndk = 25b
 android.accept_sdk_license = True
 android.archs = arm64-v8a
-android.ndk = 37c
+android.private_storage = True
+
+[buildozer]
+log_level = 2
+warn_on_root = 1
